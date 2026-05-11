@@ -27,8 +27,8 @@ export function Logo({
   
   // Light logo for dark backgrounds, dark logo for light backgrounds
   const logoSrc = variant === "light" 
-    ? "/logo-light.png" 
-    : "/logo-dark.png"
+    ? "/logo-dark.png" 
+    : "/logo-light.png"
 
   const textColor = variant === "light" ? "text-white" : "text-charcoal"
 
@@ -62,8 +62,8 @@ export function LogoIcon({
   variant?: "light" | "dark"
 }) {
   const logoSrc = variant === "light" 
-    ? "/logo-light.png" 
-    : "/logo-dark.png"
+    ? "/logo-dark.png" 
+    : "/logo-light.png"
 
   return (
     <Image
