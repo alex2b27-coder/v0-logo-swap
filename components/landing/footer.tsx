@@ -12,10 +12,10 @@ import {
 
 const footerLinks = {
   company: [
-    { label: "About", href: "#" },
-    { label: "Blog", href: "#" },
-    { label: "Careers", href: "#" },
-    { label: "Contact", href: "#" },
+    { label: "About", action: "scrollTop" },
+    { label: "Blog", action: "scrollTop" },
+    { label: "Careers", action: "scrollTop" },
+    { label: "Contact", action: "contact" },
   ],
 }
 
@@ -97,7 +97,15 @@ For questions about our Cookie Policy, contact us at bookvsflow@gmail.com.`
 }
 
 export function Footer() {
-  const [openDialog, setOpenDialog] = useState<"privacy" | "terms" | "cookies" | null>(null)
+  const [openDialog, setOpenDialog] = useState<"privacy" | "terms" | "cookies" | "contact" | null>(null)
+
+  const handleCompanyClick = (action: string) => {
+    if (action === "scrollTop") {
+      window.scrollTo({ top: 0, behavior: "smooth" })
+    } else if (action === "contact") {
+      setOpenDialog("contact")
+    }
+  }
 
   return (
     <footer className="bg-primary text-primary-foreground">
@@ -142,12 +150,12 @@ export function Footer() {
             <ul className="space-y-3">
               {footerLinks.company.map((link) => (
                 <li key={link.label}>
-                  <Link
-                    href={link.href}
+                  <button
+                    onClick={() => handleCompanyClick(link.action)}
                     className="text-sm text-primary-foreground/60 hover:text-accent transition-colors"
                   >
                     {link.label}
-                  </Link>
+                  </button>
                 </li>
               ))}
             </ul>
@@ -209,6 +217,45 @@ export function Footer() {
           </DialogContent>
         </Dialog>
       ))}
+
+      {/* Contact Dialog */}
+      <Dialog open={openDialog === "contact"} onOpenChange={(open) => setOpenDialog(open ? "contact" : null)}>
+        <DialogContent className="max-w-md">
+          <DialogHeader>
+            <DialogTitle>Contact Us</DialogTitle>
+          </DialogHeader>
+          <div className="mt-4 space-y-4">
+            <div className="flex items-center gap-3">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" className="w-5 h-5 text-accent">
+                <rect width="20" height="16" x="2" y="4" rx="2"/>
+                <path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/>
+              </svg>
+              <div>
+                <p className="text-sm text-muted-foreground">E-Mail</p>
+                <a href="mailto:bookvsflow@gmail.com" className="text-foreground hover:text-accent transition-colors">
+                  bookvsflow@gmail.com
+                </a>
+              </div>
+            </div>
+            <div className="flex items-center gap-3">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" className="w-5 h-5 text-accent">
+                <path d="M22 2L11 13M22 2l-7 20-4-9-9-4 20-7z"/>
+              </svg>
+              <div>
+                <p className="text-sm text-muted-foreground">Telegram</p>
+                <a 
+                  href="https://t.me/VShliapin" 
+                  target="_blank" 
+                  rel="noopener noreferrer"
+                  className="text-foreground hover:text-accent transition-colors"
+                >
+                  @VShliapin
+                </a>
+              </div>
+            </div>
+          </div>
+        </DialogContent>
+      </Dialog>
     </footer>
   )
 }

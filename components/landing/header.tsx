@@ -45,13 +45,8 @@ export function Header() {
 
           {/* Desktop CTA */}
           <div className="hidden md:flex items-center gap-3">
-            <Button variant="ghost" size="sm" asChild>
-              <Link href="/salon-questionnaire">Get Started</Link>
-            </Button>
             <Button size="sm" asChild className="bg-accent text-accent-foreground hover:bg-accent/90">
-              <Link href="https://t.me/bookvsflow" target="_blank" rel="noopener noreferrer">
-                @bookvsflow
-              </Link>
+              <Link href="/salon-questionnaire">Get Started</Link>
             </Button>
           </div>
 
@@ -87,13 +82,8 @@ export function Header() {
                   </Link>
                 ))}
                 <div className="pt-3 flex flex-col gap-2">
-                  <Button variant="outline" size="sm" asChild className="w-full">
-                    <Link href="/salon-questionnaire">Get Started</Link>
-                  </Button>
                   <Button size="sm" asChild className="w-full bg-accent text-accent-foreground hover:bg-accent/90">
-                    <Link href="https://t.me/bookvsflow" target="_blank" rel="noopener noreferrer">
-                      @bookvsflow
-                    </Link>
+                    <Link href="/salon-questionnaire">Get Started</Link>
                   </Button>
                 </div>
               </div>
